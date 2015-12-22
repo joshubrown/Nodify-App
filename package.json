@@ -15,6 +15,9 @@
       "test": "cake test",
       "preinstall": "rm -rf node_modules"
     },
+    "engines": {
+      "node": "4.2.3"
+    },
     "devDependencies": {
       "mocha": "2.3.4",
       "should": "8.0.2",
