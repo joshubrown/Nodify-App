@@ -3,13 +3,13 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-      "express": ">= 4.13.3",
-      "jade": ">= 1.11.0",
+      "express": "~4.13.3",
+      "jade": ">=1.11.0",
       "nodify-shopify": "git://github.com/Shopfrogs/Nodify.git",
-      "body-parser": "^1.14.2",
-      "cookie-parser": "^1.4.0",
-      "method-override": "^2.3.5",
-      "express-session": "^1.12.1"
+      "body-parser": "1.14.x",
+      "cookie-parser": "1.4.x",
+      "method-override": "2.3.x",
+      "express-session": "1.12.x"
     },
     "scripts": {
       "test": "cake test",
