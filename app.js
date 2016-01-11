@@ -4,8 +4,13 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
+  , methodOverride = require('method-override')
+  , session = require('express-session')
 
-var app = module.exports = express.createServer();
+
+var app = module.exports = express();
 var nodify = require('nodify-shopify');
  
 var apiKey, secret; 
@@ -23,25 +28,17 @@ else {
 }
 
 // Configuration
-
-app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.cookieParser());
-  app.use(express.session({ secret: "shhhhh!!!!" }));
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
-
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
-});
-
-app.configure('production', function(){
-  app.use(express.errorHandler()); 
-});
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(methodOverride());
+app.use(cookieParser());
+app.use(session({ secret: "shhhhh!!!!",
+    resave: true,
+    saveUninitialized: false
+ }));
+//app.use(app.router);
+app.use(express.static(__dirname + '/public'));
 
 // Routes
 app.get('/', function(req, res) {
@@ -203,6 +200,6 @@ var port = process.env.PORT || 3000;
 
 app.listen(port, function() {
 
-	console.log("Running on: ", app.address().port);
+	console.log("Running on: ", port);
 });
 
