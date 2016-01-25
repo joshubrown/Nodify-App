@@ -76,34 +76,14 @@ app.get('/', function(req, res) {
 		} 
 	}
 	else {
-		console.log('session is not valid yet, we need some authentication !')
+		console.log('session is not valid yet, we need some authentication !');
 		if(shop !== undefined)
 			res.redirect('/login/authenticate?shop='+shop);
 		else
-			res.redirect('/login')
+			res.redirect('https://apps.shopify.com/' + config.handle);
 	}
 });
 
-
-app.get('/login', function(req, res) {
-	try {
-		shop = res.body.shop;
-	}
-	catch(error) {
-		shop = undefined;
-	}
-
-	if(req.session.shopify){
-		res.redirect("/");
-	}
-	else if(shop != undefined) {
-		//redirect to auth
-		res.redirect("/login/authenticate");
-	}
-	else{
-		res.render("login", {title: "Nodify App"});
-	}
-});
 
 app.post('/login/authenticate', authenticate);
 app.get( '/login/authenticate', authenticate);

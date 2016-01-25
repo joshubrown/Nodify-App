@@ -1,4 +1,5 @@
 ﻿{
     "apiKey": "YOUR-API-KEY",
-    "secret": "YOUR-SHARED-SECRET"
+    "secret": "YOUR-SHARED-SECRET",
+    "handle": "YOUR-APP-HANDLE"
 }
