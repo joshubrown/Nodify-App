@@ -114,7 +114,7 @@ function authenticate(req, res) {
 	  console.log('creating a session for', shop, apiKey, secret)
 		session = nodify.createSession(shop, apiKey, secret, {
 	    scope: {orders: "read", products: "read"},
-	    uriForTemporaryToken: "http://"+req.headers.host+"/login/finalize/token",
+	    uriForTemporaryToken: "https://"+req.headers.host+"/login/finalize/token",
 	    onAskToken: function onToken (err, url) {
 	    	res.redirect(url);
 	    }
