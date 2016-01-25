@@ -69,7 +69,7 @@ app.get('/', function(req, res) {
 					console.log("products:", products);
 					if(err) {  throw err;}
 
-					res.render("index", {title: "Nodify App", current_shop: shop , orders: orders, products: products});
+					res.render("index", {title: "Nodify App", api_key: config.apiKey, current_shop: shop , orders: orders, products: products});
 				});
 
 			});

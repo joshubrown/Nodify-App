@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    script(type="text/javascript", src="https://cdn.shopify.com/s/assets/external/app.js")
+    script.
+        ShopifyApp.init({
+          apiKey: '#{api_key}',
+          shopOrigin: 'https://#{current_shop}.myshopify.com'
+        });
+  body
+      script.
+        ShopifyApp.ready(function(){
+        ShopifyApp.Bar.initialize({
+          title: 'The App Title',
+          buttons: { 
+            primary: {
+              label: 'Save', 
+              message: 'save'
+            }
+          }
+        });
+        });
+      
+      block content
+      
+      script.
+        ShopifyApp.Bar.loadingOff();
