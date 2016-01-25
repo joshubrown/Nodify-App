@@ -14,7 +14,6 @@ block content
                     thead
                         tr
                             th Order
-                            th Placed by
                             th Payment status
                             th Fulfillment
                             th Total
@@ -22,7 +21,6 @@ block content
                         tr
                             td
                                 a(href="##{order.id}", target="blank")= order.name
-                            td= order.billing_address.name
                             td
                                 - if( order.financial_status  == 'paid' )
                                     span.label.label-success Paid
